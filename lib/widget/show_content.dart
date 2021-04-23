@@ -3,20 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:rawinpornweb/utility/my_style.dart';
 
 class ShowContent extends StatelessWidget {
-  List<String> pathBanners = ['images/banner1.png', 'images/banner2.png'];
-  List<Widget> widgets = [];
+  List<String> pathBanners = [
+    'images/banner1.png',
+    'images/banner2.png',
+    'images/banner1.png'
+  ];
 
-  // Constractor ==> Main Method
-  ShowContent() {
-    initContent();
-  }
-
-  void initContent() {
-    for (var item in pathBanners) {
-      widgets.add(
-        Image.asset(item),
-      );
-    }
+  ElevatedButton elevatedButton() {
+    return ElevatedButton(
+        onPressed: () {
+          print('You Click Button');
+        },
+        child: Text('Click Me'));
   }
 
   @override
@@ -25,14 +23,19 @@ class ShowContent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         buildTitle(title: 'Promotion Today !!!'),
-        CarouselSlider(
-          items: widgets,
-          options: CarouselOptions(
-            autoPlay: true,
-            autoPlayInterval: Duration(seconds: 3),
-          ),
-        ),
+        buildCarouselSlider(),
+        buildTitle(title: 'Catigory !!!'),
       ],
+    );
+  }
+
+  Widget buildCarouselSlider() {
+    return CarouselSlider(
+      items: pathBanners.map((map) => Image.asset(map)).toList(),
+      options: CarouselOptions(
+        autoPlay: true,
+        autoPlayAnimationDuration: Duration(seconds: 10),
+      ),
     );
   }
 
