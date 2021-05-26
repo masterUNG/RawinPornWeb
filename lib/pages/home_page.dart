@@ -13,19 +13,19 @@ class HomePage extends StatelessWidget {
   }
 
   Widget buildDesktop() => Row(
-        children: [
-          Container(
-            width: 580,
-            child: ShowContent(),
+      children: [
+        Container(
+          width: 580,
+          child: ShowContent(),
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.green,
+            child: Text('This is Call To Acction'),
           ),
-          Expanded(
-            child: Container(
-              color: Colors.green,
-              child: Text('This is Call To Acction'),
-            ),
-          ),
-        ],
-      );
+        ),
+      ],
+    );
 
   Widget buildMobile() => Column(
         children: [

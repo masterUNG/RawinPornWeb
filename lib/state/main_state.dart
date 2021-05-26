@@ -143,9 +143,9 @@ class _MainStateState extends State<MainState> {
         child: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: 1200),
           child: Container(
-            child: Column(
+            child: ListView(
               children: [
-                buildMainNavigator(),
+                buildMainNavigator(),       
                 current,
               ],
             ),

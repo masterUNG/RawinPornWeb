@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:rawinpornweb/utility/my_assets.dart';
 import 'package:rawinpornweb/utility/my_style.dart';
 
-
 class ShowContent extends StatelessWidget {
   List<String> pathBanners = [
     'images/banner1.png',
@@ -16,27 +15,44 @@ class ShowContent extends StatelessWidget {
     'Cat2',
     'Cat3',
     'Cat4',
+    'Cat5',
+    'Cat6',
   ];
   List<String> pathCats = [
     MyAssets.cat1,
     MyAssets.cat2,
     MyAssets.cat3,
     MyAssets.cat4,
+    MyAssets.cat2,
+    MyAssets.cat3,
   ];
 
   List<Widget> widgets = [];
 
-  Widget createWidget(String pathImage) {
-    return Container(width: 100,
-      child: Image.asset(pathImage),
+  Widget createWidget(String pathImage, String title) {
+    return Card(
+          child: Column(
+        children: [
+          Container(
+            width: 100,
+            height: 100,
+            child: Image.asset(pathImage),
+          ),
+          Text(title),
+        ],
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    if (widgets.length != 0) {
+      widgets.clear();
+    }
+
     int index = 0;
     for (var item in titleCats) {
-      widgets.add(createWidget(pathCats[index]));
+      widgets.add(createWidget(pathCats[index], item));
       index++;
     }
 
@@ -52,6 +68,8 @@ class ShowContent extends StatelessWidget {
   }
 
   Widget buildShowCat() => GridView.extent(
+        physics: ScrollPhysics(),
+        shrinkWrap: true,
         maxCrossAxisExtent: 160,
         children: widgets,
       );
